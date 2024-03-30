@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 		float radius = GetComponent<SphereCollider>().radius;
 
 		_pool = new ObjectPool<GameObject>(
-			createFunc: () => Instantiate(_enemyPrefab, Random.insideUnitSphere * radius, Quaternion.identity ),
+			createFunc: () => Instantiate(_enemyPrefab, Random.insideUnitSphere * radius, Quaternion.identity),
 			actionOnGet: (obj) => ActionOnGet(obj),
 			actionOnRelease: (obj) => obj.SetActive(false),
 			actionOnDestroy:(obj) => Destroy(obj),
