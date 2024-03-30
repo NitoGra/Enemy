@@ -1,16 +1,19 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-	[SerializeField] private GameObject _enemyPrefab;
+	[SerializeField] private GameObject _enemyPrefab; //тип префаба Ч GameObject, указан €вно. Instantiate не принимает Prefab-ные типы 
 	[SerializeField] private float _delay;
 	[SerializeField] private Vector3 _direction;
 	[SerializeField] private float _speed;
 
 	[SerializeField] private int _poolCapacity;
 	[SerializeField] private int _poolMaxSize;
+
+	[SerializeField] private GameObject _target;
 
 	private ObjectPool<GameObject> _pool;
 
@@ -31,6 +34,7 @@ public class Spawner : MonoBehaviour
 	private void ActionOnGet(GameObject obj)
 	{
 		transform.position = transform.position;
+
 		obj.GetComponent<Move>().SetDirection(_direction);
 		obj.GetComponent<Move>().SetSpeed(_speed);
 		obj.SetActive(true);
