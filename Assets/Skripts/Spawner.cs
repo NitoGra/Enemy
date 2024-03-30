@@ -15,8 +15,6 @@ public class Spawner : MonoBehaviour
 	[SerializeField] private int _poolCapacity;
 	[SerializeField] private int _poolMaxSize;
 
-	[SerializeField] private GameObject _target;
-
 	private ObjectPool<GameObject> _pool;
 
 	private void Start()
