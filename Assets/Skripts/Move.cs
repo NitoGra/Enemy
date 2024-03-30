@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour
@@ -14,6 +12,11 @@ public class Move : MonoBehaviour
 		Invoke(nameof(Dead), timeToDead);
 	}
 
+	private void Update()
+    {
+		transform.position = Vector3.MoveTowards(transform.position, _direction, _speed * Time.deltaTime);
+	}
+
 	public void SetDirection(Vector3 direction)
 	{
 		_direction = direction;
@@ -22,11 +25,6 @@ public class Move : MonoBehaviour
 	public void SetSpeed(float speed)
 	{
 		_speed = speed;
-	}
-
-	private void Update()
-    {
-		transform.position = Vector3.MoveTowards(transform.position, _direction, _speed * Time.deltaTime);
 	}
 
 	private void Dead()
