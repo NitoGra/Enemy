@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-	[SerializeField] private GameObject _enemyPrefab; //тип префаба Ч GameObject, указан €вно. Instantiate не принимает Prefab-ные типы 
+	[SerializeField] private GameObject _enemyPrefab; //the prefab type is GameObject, specified explicitly. Instantiate does not accept Prefab types 
 	[SerializeField] private float _delay;
 	[SerializeField] private Vector3 _direction;
 	[SerializeField] private float _speed;
