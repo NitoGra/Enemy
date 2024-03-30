@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-	[SerializeField] private float timeToDead;
+	[SerializeField] private float _timeToDead;
+	[SerializeField] private float _speed;
 
-	private float _speed;
 	private Vector3 _direction;
 
 	private void Start()
 	{
-		Invoke(nameof(Dead), timeToDead);
+		Invoke(nameof(Dead), _timeToDead);
 	}
 
 	private void Update()
