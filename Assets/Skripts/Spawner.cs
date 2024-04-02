@@ -32,10 +32,10 @@ public class Spawner : MonoBehaviour
 
 	private void ActionOnGet(GameObject obj)
 	{
-		transform.position = transform.position;
+		obj.transform.position = transform.position;
 
-		obj.GetComponent<Move>().SetDirection(_direction);
-		obj.GetComponent<Move>().SetSpeed(_speed);
+		obj.GetComponent<MovementToDerection >().SetDirection(_direction);
+		obj.GetComponent<MovementToDerection >().SetSpeed(_speed);
 		obj.SetActive(true);
 	}
 
