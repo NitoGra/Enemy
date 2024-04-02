@@ -1,19 +1,23 @@
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class MovementToDerection : MonoBehaviour
 {
 	[SerializeField] private float _timeToDead;
 	[SerializeField] private float _speed;
 
 	private Vector3 _direction;
+	private GameObject _target;
 
 	private void Start()
 	{
-		Invoke(nameof(Dead), _timeToDead);
+		Invoke(nameof(Die), _timeToDead);
 	}
 
 	private void Update()
     {
+		if (_target != null)
+			_direction = _target.transform.position;
+
 		transform.position = Vector3.MoveTowards(transform.position, _direction, _speed * Time.deltaTime);
 	}
 
@@ -22,12 +26,17 @@ public class Move : MonoBehaviour
 		_direction = direction;
 	}
 
+	public void SetTarget(GameObject target)
+	{
+		_target = target;
+	}
+
 	public void SetSpeed(float speed)
 	{
 		_speed = speed;
 	}
 
-	private void Dead()
+	private void Die()
 	{
 		Destroy(gameObject);
 	}
