@@ -5,8 +5,7 @@ using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-//тип префаба — GameObject, указан явно. 
-//Неизвестно, что принимает Instantiate кроме GameObject-а и зачем именно тут нужно использовать что-то кроме него
+//Этот префаб имеет более чем один компонент. Так что использование GameObject кажется необходимым. Если это не так, то я прошу дополнительных разъяснений.
 	[SerializeField] private GameObject _enemyPrefab; 
 	[SerializeField] private float _delay;
 	[SerializeField] private Vector3 _direction;
