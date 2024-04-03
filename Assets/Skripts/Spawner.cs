@@ -25,7 +25,6 @@ public class Spawner : MonoBehaviour
 			actionOnDestroy:(obj) => Destroy(obj),
 			defaultCapacity: _poolCapacity,
 			maxSize: _poolMaxSize);
-
 		StartCoroutine(Spawn(_delay));
 	}
 
