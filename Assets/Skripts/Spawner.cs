@@ -1,14 +1,12 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-//Этот префаб имеет более чем один компонент. Так что использование GameObject кажется необходимым. Если это не так, то я прошу дополнительных разъяснений.
+	[SerializeField] private GameObject _target;
 	[SerializeField] private GameObject _enemyPrefab; 
 	[SerializeField] private float _delay;
-	[SerializeField] private Vector3 _direction;
 	[SerializeField] private float _speed;
 
 	[SerializeField] private int _poolCapacity;
@@ -21,12 +19,13 @@ public class Spawner : MonoBehaviour
 		float radius = GetComponent<SphereCollider>().radius;
 
 		_pool = new ObjectPool<GameObject>(
-			createFunc: () => Instantiate(_enemyPrefab, Random.insideUnitSphere * radius, Quaternion.identity),
+			createFunc: () => Instantiate(_enemyPrefab, transform.position, Quaternion.identity),
 			actionOnGet: (obj) => ActionOnGet(obj),
 			actionOnRelease: (obj) => obj.SetActive(false),
 			actionOnDestroy:(obj) => Destroy(obj),
 			defaultCapacity: _poolCapacity,
 			maxSize: _poolMaxSize);
+
 		StartCoroutine(Spawn(_delay));
 	}
 
@@ -34,8 +33,8 @@ public class Spawner : MonoBehaviour
 	{
 		obj.transform.position = transform.position;
 
-		obj.GetComponent<MovementToDerection >().SetDirection(_direction);
-		obj.GetComponent<MovementToDerection >().SetSpeed(_speed);
+		obj.GetComponent<MovementToDerection>().SetTarget(_target);
+		obj.GetComponent<MovementToDerection>().SetSpeed(_speed);
 		obj.SetActive(true);
 	}
 

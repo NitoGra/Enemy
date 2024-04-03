@@ -10,15 +10,21 @@ public class MovementToDerection : MonoBehaviour
 
 	private void Start()
 	{
-		Invoke(nameof(Die), _timeToDead);
+		if (_timeToDead != 0)
+			Invoke(nameof(Die), _timeToDead);
 	}
 
 	private void Update()
-    {
+	{
 		if (_target != null)
 			_direction = _target.transform.position;
 
 		transform.position = Vector3.MoveTowards(transform.position, _direction, _speed * Time.deltaTime);
+	}
+
+	private void Die()
+	{
+		Destroy(gameObject);
 	}
 
 	public void SetDirection(Vector3 direction)
@@ -34,10 +40,5 @@ public class MovementToDerection : MonoBehaviour
 	public void SetSpeed(float speed)
 	{
 		_speed = speed;
-	}
-
-	private void Die()
-	{
-		Destroy(gameObject);
 	}
 }

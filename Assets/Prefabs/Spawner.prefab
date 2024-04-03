@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 88165814370051721}
   - component: {fileID: 8307561110457241630}
-  - component: {fileID: 6643774146651132372}
+  - component: {fileID: 5670920994061484362}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -48,10 +48,10 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 6420866085633458563, guid: c628c00edd4d85646a3f33ea8f17fa9d, type: 3}
   _delay: 2
   _direction: {x: 1000, y: 0, z: 0}
-  _speed: 5
+  _speed: 15
   _poolCapacity: 0
   _poolMaxSize: 12
---- !u!135 &6643774146651132372
+--- !u!135 &5670920994061484362
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,5 +70,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
