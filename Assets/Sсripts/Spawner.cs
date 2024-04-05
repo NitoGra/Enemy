@@ -4,7 +4,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 	[SerializeField] private GameObject _target;
-	//если вы пишите, что создавать поле GameObject плохо, то через какое поле и как именно мне инициировать enemy в 35 строке?
+	//РµСЃР»Рё РІС‹ РїРёС€РёС‚Рµ, С‡С‚Рѕ СЃРѕР·РґР°РІР°С‚СЊ РїРѕР»Рµ GameObject РїР»РѕС…Рѕ, С‚Рѕ С‡РµСЂРµР· РєР°РєРѕРµ РїРѕР»Рµ Рё РєР°Рє РёРјРµРЅРЅРѕ РјРЅРµ РёРЅРёС†РёРёСЂРѕРІР°С‚СЊ enemy РІ 35 СЃС‚СЂРѕРєРµ?
 	[SerializeField] private GameObject _enemyPrefab;
 	[SerializeField] private float _delay;
 	[SerializeField] private float _speed;
