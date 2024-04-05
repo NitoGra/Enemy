@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5302165507472355655, guid: b5415df62becb80489709b3eb189c5f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.01
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: 5302165507472355655, guid: b5415df62becb80489709b3eb189c5f3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -178,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 7745852591080795782, guid: b5415df62becb80489709b3eb189c5f3, type: 3}
       propertyPath: m_Name
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879695059689481374, guid: b5415df62becb80489709b3eb189c5f3, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1203,6 +1207,10 @@ PrefabInstance:
       value: Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 8307561110457241630, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
+      propertyPath: _delay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307561110457241630, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 1223340982}
@@ -1518,15 +1526,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 88165814370051721, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.214032
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 88165814370051721, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.59344065
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 88165814370051721, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.043214172
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 88165814370051721, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1559,6 +1567,14 @@ PrefabInstance:
     - target: {fileID: 5012990261697704387, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
       propertyPath: m_Name
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307561110457241630, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
+      propertyPath: _delay
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307561110457241630, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
+      propertyPath: _speed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8307561110457241630, guid: a46d8ac9aff0bd04da0805f3d3c85419, type: 3}
       propertyPath: _target

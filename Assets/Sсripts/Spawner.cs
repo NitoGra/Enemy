@@ -12,29 +12,18 @@ public class Spawner : MonoBehaviour
 	[SerializeField] private int _poolCapacity;
 	[SerializeField] private int _poolMaxSize;
 
-	private ObjectPool<GameObject> _pool;
-
 	private void Start()
     {
-		float radius = GetComponent<SphereCollider>().radius;
-
-		_pool = new ObjectPool<GameObject>(
-			createFunc: () => Instantiate(_enemyPrefab, transform.position, Quaternion.identity),
-			actionOnGet: (obj) => ActionOnGet(obj),
-			actionOnRelease: (obj) => obj.SetActive(false),
-			actionOnDestroy:(obj) => Destroy(obj),
-			defaultCapacity: _poolCapacity,
-			maxSize: _poolMaxSize);
 		StartCoroutine(Spawn(_delay));
 	}
 
 	private void ActionOnGet(GameObject obj)
 	{
+		MovementToDerection movement = obj.GetComponent<MovementToDerection>();
 		obj.transform.position = transform.position;
 
-		obj.GetComponent<MovementToDerection>().SetTarget(_target);
-		obj.GetComponent<MovementToDerection>().SetSpeed(_speed);
-		obj.SetActive(true);
+		movement.SetTarget(_target);
+		movement.SetSpeed(_speed);
 	}
 
 	private IEnumerator Spawn(float delay)
@@ -43,7 +32,8 @@ public class Spawner : MonoBehaviour
 
 		while (enabled)
 		{
-			_pool.Get();
+			GameObject enemy = Instantiate(_enemyPrefab);
+			ActionOnGet(enemy);
 			yield return wait;
 		}
 	}

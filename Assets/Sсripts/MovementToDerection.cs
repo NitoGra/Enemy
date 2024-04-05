@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MovementToDerection : MonoBehaviour
@@ -5,7 +6,7 @@ public class MovementToDerection : MonoBehaviour
 	[SerializeField] private float _timeToDead;
 	[SerializeField] private float _speed;
 
-	private Vector3 _direction;
+	private Vector3 _nextPosition;
 	private GameObject _target;
 
 	private void Start()
@@ -16,10 +17,7 @@ public class MovementToDerection : MonoBehaviour
 
 	private void Update()
 	{
-		if (_target != null)
-			_direction = _target.transform.position;
-
-		transform.position = Vector3.MoveTowards(transform.position, _direction, _speed * Time.deltaTime);
+		MoveToNextPosition();
 	}
 
 	private void Die()
@@ -27,9 +25,17 @@ public class MovementToDerection : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	public void SetDirection(Vector3 direction)
+	protected void MoveToNextPosition()
 	{
-		_direction = direction;
+		if (_target != null)
+			SetNextPosition(_target.transform.position);
+
+		transform.position = Vector3.MoveTowards(transform.position, _nextPosition, _speed * Time.deltaTime);
+	}
+
+	public void SetNextPosition(Vector3 nextPosition)
+	{
+		_nextPosition = nextPosition;
 	}
 
 	public void SetTarget(GameObject target)
