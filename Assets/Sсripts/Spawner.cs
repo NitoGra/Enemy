@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
 	[SerializeField] private GameObject _target;
-	[SerializeField] private GameObject _enemyPrefab; 
+	//если вы пишите, что создавать поле GameObject плохо, то через какое поле и как именно мне инициировать enemy в 35 строке?
+	[SerializeField] private GameObject _enemyPrefab;
 	[SerializeField] private float _delay;
 	[SerializeField] private float _speed;
 
