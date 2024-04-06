@@ -6,7 +6,7 @@ public class MovementToDerection : MonoBehaviour
 	[SerializeField] private float _speed;
 
 	private Vector3 _nextPosition;
-	private GameObject _target;
+	private Transform _target;
 
 	private void Start()
 	{
@@ -27,17 +27,17 @@ public class MovementToDerection : MonoBehaviour
 	protected void MoveToNextPosition()
 	{
 		if (_target != null)
-			SetNextPosition(_target.transform.position);
+			RotateToPosition(_target);
 
-		transform.position = Vector3.MoveTowards(transform.position, _nextPosition, _speed * Time.deltaTime);
+		transform.Translate(Vector3.forward * _speed * Time.deltaTime);
 	}
 
-	public void SetNextPosition(Vector3 nextPosition)
+	public void RotateToPosition(Transform nextPosition)
 	{
-		_nextPosition = nextPosition;
+		transform.LookAt(nextPosition);
 	}
 
-	public void SetTarget(GameObject target)
+	public void SetTarget(Transform target)
 	{
 		_target = target;
 	}

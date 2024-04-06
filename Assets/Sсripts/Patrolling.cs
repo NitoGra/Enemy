@@ -7,13 +7,13 @@ public class Patrolling : MovementToDerection
 	[SerializeField] private float _minDistance;
 
 	private int _index;
-	private Vector3 _wayPoint;
+	private Transform _wayPoint;
 
 	private void Start()
 	{
 		_index = 0;
-		_wayPoint = _wayPoints[_index].position;
-		SetNextPosition(_wayPoint);
+		_wayPoint = _wayPoints[_index];
+		RotateToPosition(_wayPoint);
 	}
 
 	private void Update()
@@ -25,7 +25,7 @@ public class Patrolling : MovementToDerection
 		{
 			int index = _wayPoints.Count - 1;
 
-			if (_wayPoint == _wayPoints[index].position)
+			if (_wayPoint == _wayPoints[index])
 				_index = 0;
 			else
 				_index++;
@@ -36,7 +36,7 @@ public class Patrolling : MovementToDerection
 
 	private void MakeNextPosition()
 	{
-		_wayPoint = _wayPoints[_index].position;
-		SetNextPosition(_wayPoint);
+		_wayPoint = _wayPoints[_index];
+		RotateToPosition(_wayPoint);
 	}
 }
