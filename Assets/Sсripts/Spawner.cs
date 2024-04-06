@@ -3,25 +3,23 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-	[SerializeField] private GameObject _target;
-	//если вы пишите, что создавать поле GameObject плохо, то через какое поле и как именно мне инициировать enemy в 35 строке?
-	[SerializeField] private GameObject _enemyPrefab;
+	[SerializeField] private Transform _target;
 	[SerializeField] private float _delay;
 	[SerializeField] private float _speed;
-
-	[SerializeField] private int _poolCapacity;
-	[SerializeField] private int _poolMaxSize;
+	[SerializeField] private Material _material;
 
 	private void Start()
     {
 		StartCoroutine(Spawn(_delay));
 	}
 
-	private void ActionOnGet(GameObject obj)
+	private void ActionOnSpawn(GameObject enemy)
 	{
-		MovementToDerection movement = obj.GetComponent<MovementToDerection>();
-		obj.transform.position = transform.position;
+		enemy.GetComponent<Renderer>().material = _material;
+		enemy.transform.position = transform.position;
+		enemy.tag = "Enemy";
 
+		MovementToDerection movement = enemy.AddComponent<MovementToDerection>();
 		movement.SetTarget(_target);
 		movement.SetSpeed(_speed);
 	}
@@ -32,8 +30,8 @@ public class Spawner : MonoBehaviour
 
 		while (enabled)
 		{
-			GameObject enemy = Instantiate(_enemyPrefab);
-			ActionOnGet(enemy);
+			GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			ActionOnSpawn(enemy);
 			yield return wait;
 		}
 	}
