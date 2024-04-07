@@ -18,7 +18,6 @@ public class Spawner : MonoBehaviour
 	{
 		enemy.material = _material;
 		enemy.gameObject.transform.position = transform.position;
-		enemy.gameObject.tag = "Enemy";
 
 		MovementToDerection movement = enemy.gameObject.AddComponent<MovementToDerection>();
 		movement.SetTarget(_target);
