@@ -16,7 +16,7 @@ public class MovementToDerection : MonoBehaviour
 
 	private void Update()
 	{
-		MoveToNextPosition();
+		ChangeTargetWayPoint();
 	}
 
 	private void Die()
@@ -24,7 +24,7 @@ public class MovementToDerection : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	protected void MoveToNextPosition()
+	protected void ChangeTargetWayPoint()
 	{
 		if (_target != null)
 			RotateToPosition(_target);

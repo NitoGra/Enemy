@@ -16,10 +16,8 @@ public class Target : MonoBehaviour
 	}
 
 	private void OnCollisionEnter(Collision collision)
-	{
-		string targetTag = "Enemy";
-
-		if (collision.gameObject.tag == targetTag)
+	{ 
+		if (collision.gameObject.TryGetComponent<MovementToDerection>(out MovementToDerection movementToDerection))
 		{
 			_audio.Play();
 			_mesh.material = _popMaterial;
