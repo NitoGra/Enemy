@@ -18,7 +18,7 @@ public class Patrolling : MovementToDerection
 
 	private void Update()
 	{
-		ChangeTargetWayPoint();
+		MoveToTargetWayPoint();
 		float distance = Vector3.Distance(_wayPoints[_index].position, transform.position);
 
 		if (distance <= _minDistance)

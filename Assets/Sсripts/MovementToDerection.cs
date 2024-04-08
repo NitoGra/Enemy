@@ -5,7 +5,6 @@ public class MovementToDerection : MonoBehaviour
 	[SerializeField] private float _timeToDead;
 	[SerializeField] private float _speed;
 
-	private Vector3 _nextPosition;
 	private Transform _target;
 
 	private void Start()
@@ -16,7 +15,7 @@ public class MovementToDerection : MonoBehaviour
 
 	private void Update()
 	{
-		ChangeTargetWayPoint();
+		MoveToTargetWayPoint();
 	}
 
 	private void Die()
@@ -24,17 +23,12 @@ public class MovementToDerection : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	protected void ChangeTargetWayPoint()
+	protected void MoveToTargetWayPoint()
 	{
 		if (_target != null)
-			RotateToPosition(_target);
+			transform.LookAt(_target);
 
 		transform.Translate(Vector3.forward * _speed * Time.deltaTime);
-	}
-
-	public void RotateToPosition(Transform nextPosition)
-	{
-		transform.LookAt(nextPosition);
 	}
 
 	public void SetTarget(Transform target)
