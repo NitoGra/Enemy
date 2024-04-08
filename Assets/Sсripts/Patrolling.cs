@@ -23,13 +23,7 @@ public class Patrolling : MovementToDerection
 
 		if (distance <= _minDistance)
 		{
-			int index = _wayPoints.Count - 1;
-
-			if (_wayPoint == _wayPoints[index])
-				_index = 0;
-			else
-				_index++;
-
+			_index = ++_index % _wayPoints.Count == 0 ? 0 : _index++;
 			MakeNextPosition();
 		}
 	}

@@ -7,10 +7,10 @@ public class Spawner : MonoBehaviour
 	[SerializeField] private float _delay;
 	[SerializeField] private float _speed;
 	[SerializeField] private Material _material;
-	[SerializeField] private Renderer _prefab;
+	[SerializeField] private Renderer _enemy;
 
 	private void Start()
-    {
+	{
 		StartCoroutine(Spawn(_delay));
 	}
 
@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 		enemy.material = _material;
 		enemy.gameObject.transform.position = transform.position;
 
-		MovementToDerection movement = enemy.gameObject.AddComponent<MovementToDerection>();
+		MovementToDerection movement = enemy.gameObject.GetComponent<MovementToDerection>();
 		movement.SetTarget(_target);
 		movement.SetSpeed(_speed);
 	}
@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
 
 		while (enabled)
 		{
-			Renderer enemy = Instantiate(_prefab);
+			Renderer enemy = Instantiate(_enemy);
 			ActionOnSpawn(enemy);
 			yield return wait;
 		}

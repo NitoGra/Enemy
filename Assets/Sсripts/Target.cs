@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    [SerializeField] private Material _baseMaterial; 
-    [SerializeField] private Material _popMaterial; 
+	[SerializeField] private Material _baseMaterial;
+	[SerializeField] private Material _popMaterial;
 	[SerializeField] private float _popTime;
 
 	private AudioSource _audio;
@@ -16,8 +16,8 @@ public class Target : MonoBehaviour
 	}
 
 	private void OnCollisionEnter(Collision collision)
-	{ 
-		if (collision.gameObject.TryGetComponent<MovementToDerection>(out MovementToDerection movementToDerection))
+	{
+		if (collision.gameObject.TryGetComponent(out MovementToDerection movementToDerection))
 		{
 			_audio.Play();
 			_mesh.material = _popMaterial;
@@ -26,8 +26,8 @@ public class Target : MonoBehaviour
 		}
 	}
 
-    private void ReturnToBase()
-    {
+	private void ReturnToBase()
+	{
 		_mesh.material = _baseMaterial;
-    }
+	}
 }
