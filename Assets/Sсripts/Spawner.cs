@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -7,19 +8,19 @@ public class Spawner : MonoBehaviour
 	[SerializeField] private float _delay;
 	[SerializeField] private float _speed;
 	[SerializeField] private Material _material;
-	[SerializeField] private Renderer _enemy;
+	[SerializeField] private Enemy _enemy;
 
 	private void Start()
 	{
 		StartCoroutine(Spawn(_delay));
 	}
 
-	private void ActionOnSpawn(Renderer enemy)
+	private void ActionOnSpawn(GameObject enemy)
 	{
-		enemy.material = _material;
-		enemy.gameObject.transform.position = transform.position;
+		enemy.GetComponent<Renderer>().material = _material;
+		enemy.transform.position = transform.position;
 
-		MovementToDerection movement = enemy.gameObject.GetComponent<MovementToDerection>();
+		MovementToDerection movement = enemy.GetComponent<MovementToDerection>();
 		movement.SetTarget(_target);
 		movement.SetSpeed(_speed);
 	}
@@ -30,9 +31,14 @@ public class Spawner : MonoBehaviour
 
 		while (enabled)
 		{
-			Renderer enemy = Instantiate(_enemy);
+			GameObject enemy = Instantiate(_enemy.Prefab);
 			ActionOnSpawn(enemy);
 			yield return wait;
 		}
 	}
+}
+
+public class Enemy
+{
+	public GameObject Prefab;
 }
