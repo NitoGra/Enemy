@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -7,8 +6,8 @@ public class Spawner : MonoBehaviour
 	[SerializeField] private Transform _target;
 	[SerializeField] private float _delay;
 	[SerializeField] private float _speed;
+	[SerializeField] private GameObject _enemyPrefab;
 	[SerializeField] private Material _material;
-	[SerializeField] private Enemy _enemy;
 
 	private void Start()
 	{
@@ -31,14 +30,9 @@ public class Spawner : MonoBehaviour
 
 		while (enabled)
 		{
-			GameObject enemy = Instantiate(_enemy.Prefab);
+			GameObject enemy = Instantiate(_enemyPrefab);
 			ActionOnSpawn(enemy);
 			yield return wait;
 		}
 	}
-}
-
-public class Enemy
-{
-	public GameObject Prefab;
 }
